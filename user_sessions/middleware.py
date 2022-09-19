@@ -25,7 +25,7 @@ class SessionMiddleware(MiddlewareMixin):
         session_key = request.COOKIES.get(settings.SESSION_COOKIE_NAME, None)
         request.session = engine.SessionStore(
             ip=request.META.get('REMOTE_ADDR', ''),
-            user_agent=request.META.get('HTTP_USER_AGENT', ''),
+            user_agent=request.headers.get('User-Agent', ''),
             session_key=session_key
         )
 

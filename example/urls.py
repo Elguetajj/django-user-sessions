@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.urls import include, re_path
+from django.urls import include, path, re_path, reverse_lazy
 from django.contrib import admin
 from django.urls import reverse_lazy
 from django.views.generic.base import RedirectView
@@ -7,7 +7,7 @@ from django.views.generic.base import RedirectView
 admin.autodiscover()
 
 urlpatterns = [
-    re_path('^$', RedirectView.as_view(
+    path('', RedirectView.as_view(
             url=reverse_lazy('user_sessions:session_list'),
             permanent=True,
         ),
